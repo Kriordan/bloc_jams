@@ -13,12 +13,42 @@ body {
 }
 
 .navbar {
-	background-color: rgb(101,18,95);
+	background-color: rgba(101,18,95,.5);
 	padding: .5rem;
+	position: relative;
+	z-index: 1;
 }
-.logo {
+.navbar .logo {
+	cursor: pointer;
 	left: 2rem;
 	position: relative;
+}
+.navbar .links-container {
+	color: #fff;
+	display: table;
+	height: 100px;
+	position: absolute;
+	right: 0;
+	text-decoration: none;
+	top: 0;
+}
+.links-container .navbar-link {
+	display: table-cell;
+	position: relative;
+	height: 100%;
+	padding-left: 1rem;
+	padding-right: 1rem;
+	vertical-align: middle;
+	color: white;
+	font-size: 0.625rem;
+	letter-spacing: 0.05rem;
+	font-weight: 700;
+	text-transform: uppercase;
+	text-decoration: none;
+	cursor: pointer;
+}
+.links-container .navbar-link:hover {
+	color: rgb(233,50,117);
 }
 .container {
 	margin: 0 auto;
