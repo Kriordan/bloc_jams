@@ -50,6 +50,10 @@ body {
 .links-container .navbar-link:hover {
 	color: rgb(233,50,117);
 }
+.links-container .navbar-link:active {
+	background-color: #fff;
+	color: rgb(233,50,117);
+}
 .container {
 	margin: 0 auto;
 	max-width: 64rem;
