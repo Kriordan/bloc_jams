@@ -28,6 +28,10 @@
 	padding: 2rem;
 	position: relative;
 	text-align: center;
+	opacity: 0;
+	transform: scaleX(.9) translateY(3rem);
+	transition: all .25s ease-in-out;
+	transition-delay: .2s;
 }
 .point-title {
 	font-size: 1.25rem;
