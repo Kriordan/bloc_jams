@@ -29,8 +29,8 @@
 	position: relative;
 	text-align: center;
 	opacity: 0;
-	transform: scaleX(.9) translateY(3rem);
-	transition: all .25s ease-in-out;
+	transform: scaleX(.5) translateY(-6rem) rotateX(180deg);
+	transition: all 1s ease-in;
 	transition-delay: .2s;
 }
 .point-title {
