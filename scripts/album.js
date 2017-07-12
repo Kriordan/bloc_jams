@@ -15,7 +15,7 @@ var albumPicasso = {
 };
 
 // Another album
-var albumMarconi= {
+var albumMarconi = {
   title: 'The Telephone',
   artist: 'Guglielmo Marconi',
   label: 'EM',
@@ -30,6 +30,23 @@ var albumMarconi= {
   ]
 };
 
+var albumBeck = {
+  title: 'Odelay',
+  artist: 'Beck',
+  label: 'Something',
+  year: '1996',
+  albumArtUrl: 'assets/images/album_covers/02.png',
+  songs: [
+    { title: 'Devil\'s Haircut', duration: '2:01'},
+    { title: 'Hotwax', duration: '8:01'},
+    { title: 'Lord Only Knows', duration: '2:21' },
+    { title: 'The New Pollution', duration: '5:14' },
+    { title: 'Derelict', duration: '3:15'}
+  ]
+};
+
+var albums = [albumPicasso, albumMarconi, albumBeck];
+
 var createSongRow = function(songNumber, songName, songLength) {
   var template =
       '<tr class="album-view-song-item">'
@@ -42,13 +59,13 @@ var createSongRow = function(songNumber, songName, songLength) {
   return template;
 };
 
-var setCurrentAlbum = function(album) {
-  var albumTitle = document.getElementsByClassName('album-view-title')[0];
-  var albumArtist = document.getElementsByClassName('album-view-artist')[0];
-  var albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];
-  var albumImage = document.getElementsByClassName('album-cover-art')[0];
-  var albumSongList = document.getElementsByClassName('album-view-song-list')[0];
+var albumTitle = document.getElementsByClassName('album-view-title')[0];
+var albumArtist = document.getElementsByClassName('album-view-artist')[0];
+var albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];
+var albumImage = document.getElementsByClassName('album-cover-art')[0];
+var albumSongList = document.getElementsByClassName('album-view-song-list')[0];
 
+var setCurrentAlbum = function(album) {
   albumTitle.firstChild.nodeValue = album.title;
   albumArtist.firstChild.nodeValue = album.artist;
   albumReleaseInfo.firstChild.nodeValue = album.year + ' ' + album.label;
@@ -57,10 +74,19 @@ var setCurrentAlbum = function(album) {
   albumSongList.innerHTML = '';
 
   for (var i = 0; i < album.songs.length; i++) {
-    albumSongList.innerHTML += createSongRow(i, album.songs[i].title, album.songs[i].duration);
+    albumSongList.innerHTML += createSongRow(i + 1, album.songs[i].title, album.songs[i].duration);
   }
 };
 
 window.onload = function() {
   setCurrentAlbum(albumPicasso);
+
+  var albumIndex = 0;
+  albumImage.addEventListener('click', function(event) {
+    setCurrentAlbum(albums[albumIndex]);
+    albumIndex++;
+    if (albumIndex === albums.length) {
+      albumIndex = 0;
+    }
+  });
 };
